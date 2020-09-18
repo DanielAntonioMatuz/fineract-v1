@@ -2,6 +2,7 @@
 import {Component} from '@angular/core';
 import {UsersService} from '../../../users/users.service';
 import {crudService} from '../../crud.service';
+import {Observable} from 'rxjs';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -35,6 +36,8 @@ export class ViewCrudComponent {
   displayedColumns: string[] = ['mercado', 'nombre', 'ancho inversión', 'región'];
   dataSource = ELEMENT_DATA;
   data: any[] = [];
+  beneData: Observable<any[]>;
+
   constructor(
     private _benefactorData: crudService,
   ) { }
@@ -52,8 +55,7 @@ export class ViewCrudComponent {
   }
 
   getDataTest() {
-      this._benefactorData.getBenefactorList().subscribe((data) => {
-        console.log(data);
-      });
+    this.beneData = this._benefactorData.getBenefactorList();
+    console.log(this._benefactorData.getBenefactorList());
   }
 }

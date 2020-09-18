@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 /** Http request options headers. */
 const httpOptions = {
   headers: {
-    'Fineract-Platform-TenantId': environment.fineractPlatformTenantId
+    /*'Fineract-Platform-TenantId': environment.fineractPlatformTenantId*/
   }
 };
 
@@ -32,7 +32,12 @@ export class AuthenticationInterceptor implements HttpInterceptor {
    * Intercepts a Http request and sets the request headers.
    */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    request = request.clone({ setHeaders: httpOptions.headers });
+    console.log(request);
+    if (request.url === 'http://34.207.132.190/api/benefactor-list/?format=json') {
+
+    } else {
+      request = request.clone({ setHeaders: httpOptions.headers });
+    }
     return next.handle(request);
   }
 

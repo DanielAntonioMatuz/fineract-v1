@@ -18,7 +18,12 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
    * Intercepts a Http request and prefixes it with `environment.serverUrl`.
    */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    request = request.clone({ url: environment.serverUrl + request.url });
+    console.log(request.url);
+    if (request.url === 'http://34.207.132.190/api/benefactor-list/?format=json') {
+      request = request.clone({ url: request.url });
+    } else {
+      request = request.clone({ url: environment.serverUrl + request.url });
+    }
     return next.handle(request);
   }
 

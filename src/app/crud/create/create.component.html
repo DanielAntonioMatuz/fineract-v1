@@ -3,20 +3,24 @@
   <h2>Registro de datos (CRUD de prueba)</h2>
   <button style="margin-bottom: 20px" mat-raised-button color="primary" routerLink="/collections/view">Visualizar datos</button>
 
+  <div *ngIf="status" class="alert alert-success" role="alert">
+    Registro completado
+  </div>
+
   <mat-card>
-    <form class="example-form">
+    <form class="example-form" (ngSubmit)="registrar()">
       <table class="example-full-width">
         <tr>
           <td>
             <mat-form-field>
-              <mat-label>Nombre Completo</mat-label>
-              <input matInput>
+              <mat-label >Nombre Completo</mat-label>
+              <input matInput id="full_name" required [(ngModel)]="benefactor.full_name" name="full_name">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width">
               <mat-label>CURP</mat-label>
-              <input matInput>
+              <input matInput id="curp" required [(ngModel)]="benefactor.curp" name="curp">
             </mat-form-field>
           </td>
         </tr>
@@ -24,26 +28,63 @@
           <td>
             <mat-form-field>
               <mat-label>NSS</mat-label>
-              <input matInput>
+              <input matInput id="nss" required [(ngModel)]="benefactor.nss" name="nss">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field>
               <mat-label>Genero</mat-label>
-              <input matInput>
+              <input matInput id="genre" required [(ngModel)]="benefactor.genre" name="genre">
             </mat-form-field>
           </td>
         </tr>
+
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Blood Type</mat-label>
+              <input matInput id="blood_type" required [(ngModel)]="benefactor.blood_type" name="blood_type">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input type="email" matInput id="email" required [(ngModel)]="benefactor.email" name="email">
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Phone Number</mat-label>
+              <input type="number" matInput id="phone_number" required [(ngModel)]="benefactor.phone_number" name="phone_number">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Salary</mat-label>
+              <input type="number" matInput id="salary" required [(ngModel)]="benefactor.salary" name="salary">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Insured amount</mat-label>
+              <input type="number" matInput id="insured_amount" required [(ngModel)]="benefactor.insured_amount" name="insured_amount">
+            </mat-form-field>
+          </td>
+        </tr>
+
       </table>
 
       <p>
         <mat-form-field class="example-full-width">
           <mat-label>Address</mat-label>
-          <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+          <textarea matInput placeholder="Ex. 100 Main St" id="address" required [(ngModel)]="benefactor.address" name="address"></textarea>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <mat-label>Address 2</mat-label>
-          <textarea matInput></textarea>
+          <mat-label>Country</mat-label>
+          <textarea matInput id="country" required [(ngModel)]="benefactor.country" name="country"></textarea>
         </mat-form-field>
       </p>
 
@@ -52,25 +93,28 @@
           <td>
             <mat-form-field class="example-full-width">
               <mat-label>City</mat-label>
-              <input matInput placeholder="Ex. San Francisco">
+              <input matInput placeholder="Ex. San Francisco" id="city" required [(ngModel)]="benefactor.city" name="city">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width">
               <mat-label>State</mat-label>
-              <input matInput placeholder="Ex. California">
+              <input matInput placeholder="Ex. California" id="state" required [(ngModel)]="benefactor.state" name="state">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width">
               <mat-label>Postal Code</mat-label>
-              <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+              <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043" id="postal_code" required [(ngModel)]="benefactor.postal_code" name="postal_code">
               <mat-hint align="end"> / 5</mat-hint>
             </mat-form-field>
           </td>
         </tr>
       </table>
+      <button style="margin-bottom: 20px; margin-top: 40px" mat-raised-button color="primary" type="submit">Registrar</button>
+
     </form>
+
   </mat-card>
 
 </div>
