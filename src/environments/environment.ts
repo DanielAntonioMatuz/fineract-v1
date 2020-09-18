@@ -22,8 +22,29 @@ export const environment = {
   supportedLanguages: [
     'en-US',
     'fr-FR'
-  ]
+  ],
 };
+
+export const environmentTest = {
+  production: false,
+  version: env.npm_package_version + '-dev',
+  fineractPlatformTenantId: 'default',  // For connecting to server running elsewhere update the tenant identifier
+  baseApiUrl: 'http://34.207.132.190/',  // For connecting to server running elsewhere update the base API URL
+  apiProvider: 'api/',
+  apiVersion: '',
+  serverUrl: '',
+  oauth: {
+    enabled: false,  // For connecting to Mifos X using OAuth2 Authentication change the value to true
+    serverUrl: ''
+  },
+  defaultLanguage: 'en-US',
+  supportedLanguages: [
+    'en-US',
+    'fr-FR'
+  ],
+  URL: 'http://34.207.132.190/',
+};
+
 
 // Server URL
 environment.serverUrl = `${environment.baseApiUrl}${environment.apiProvider}${environment.apiVersion}`;

@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 /** rxjs Imports */
 import { Observable } from 'rxjs';
+import {environment, environmentTest} from '../../environments/environment';
 
 /**
  * Users service.
@@ -12,11 +13,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-
   /**
    * @param {HttpClient} http Http Client to send requests.
    */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   /**
    * @returns {Observable<any>} Users data
@@ -24,7 +25,6 @@ export class UsersService {
   getUsers(): Observable<any> {
     return this.http.get('/users');
   }
-
   /**
    * @returns {Observable<any>} Users template data
    */
